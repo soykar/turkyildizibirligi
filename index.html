@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TÜRK YILDIZI BİRLİĞİ</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+</head>
+<body>
+  <div id="digital-network"></div>
+  <canvas id="matrix-canvas"></canvas>
+  <div id="tsparticles"></div>
+
+  <div class="container">
+    <header id="anasayfa">
+      <img src="static/logo.png" alt="Logo" class="site-logo">
+      <h1 class="site-title">TÜRK YILDIZI BİRLİĞİ</h1>
+      <p class="slogan">Dijital çağın rotasını biz çiziyoruz!</p>
+    </header>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="#anasayfa">Ana Sayfa</a></li>
+        <li><a href="#hakkimizda">Hakkımızda</a></li>
+        <li><a href="#projeler">Projeler</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+    </nav>
+
+    <section class="content" id="hakkimizda">
+      <h2>Hakkımızda</h2>
+      <p>Türk Yıldızı Birliği, Türk tarihini ve dilini teknolojiyle buluşturan gençlik hareketidir. Milli bilinç, bilim, kültür ve geleceği birleştiriyoruz.</p>
+    </section>
+
+    <section class="content" id="projeler">
+      <h2>Projeler</h2>
+      <ul>
+        <li>Bozkurt'un Çağrısı - Türk Mitolojisi Tabanlı Oyun</li>
+        <li>ULUĞ BEY ZİCİ Gök Bilim Akademisi</li>
+        <li>Erzurumlu Kara Fatma Metaverse Projesi</li>
+      </ul>
+    </section>
+
+    <section class="content" id="iletisim">
+      <h2>İletişim</h2>
+      <p>📧 turkyildizibirligi@gmail.com<br>📍 Erzurum, Türkiye</p>
+    </section>
+
+    <footer>
+      <p>© 2025 Türk Yıldızı Birliği | Tüm Hakları Saklıdır</p>
+    </footer>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const chars = "01★TÜRK+-*/=YILDIZI";
+    const fontSize = 16;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#FF0000";
+      ctx.font = fontSize + "px monospace";
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+    }
+
+    tsParticles.load("tsparticles", {
+      particles: {
+        number: { value: 30 },
+        shape: {
+          type: "image",
+          image: { src: "static/benim_logo.svg", width: 100, height: 100 }
+        },
+        size: { value: 25 },
+        opacity: { value: 0.8 },
+        move: { enable: true, speed: 2, outModes: "bounce" },
+        links: { enable: true, distance: 150, color: "#ff0000", opacity: 0.5, width: 1 }
+      }
+    });
+
+    setInterval(drawMatrix, 45);
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
