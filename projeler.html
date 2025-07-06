@@ -1,41 +1,155 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projeler - Türk Yıldızı Birliği</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <header>
-      <a href="index.html">
-        <img src="static/logo.png" alt="Logo" class="site-logo" />
-      </a>
-      <h1 class="site-title">TÜRK YILDIZI BİRLİĞİ</h1>
-    </header>
+/* Genel Ayarlar */
+:root {
+  --primary: #8B0000;
+  --secondary: #FF4444;
+  --text: #FFFFFF;
+  --font-main: 'Segoe UI', Tahoma, sans-serif;
+  --font-heading: 'Orbitron', sans-serif;
+}
 
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Ana Sayfa</a></li>
-        <li><a href="hakkimizda.html">Hakkımızda</a></li>
-        <li><a href="projeler.html" class="active">Projeler</a></li>
-        <li><a href="iletisim.html">İletişim</a></li>
-      </ul>
-    </nav>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    <section class="content">
-      <h2>Projelerimiz</h2>
-      <ul>
-        <li>Bozkurt'un Çağrısı - Türk Mitolojisi Tabanlı Oyun</li>
-        <li>ULUĞ BEY ZİCİ Gök Bilim Akademisi</li>
-        <li>Erzurumlu Kara Fatma Metaverse Projesi</li>
-      </ul>
-    </section>
+body, html {
+  height: 100%;
+  font-family: var(--font-main);
+  background: var(--primary);
+  color: var(--text);
+  overflow-x: hidden;
+}
 
-    <footer>
-      <p>© 2025 Türk Yıldızı Birliği | Tüm Hakları Saklıdır</p>
-    </footer>
-  </div>
-</body>
-</html>
+/* Konteyner */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  box-shadow: 0 0 15px #ff4444cc;
+}
+
+/* Başlık */
+header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.site-logo {
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #ff0000);
+  border-radius: 10px;
+  transition: filter 0.3s ease;
+}
+
+.site-logo:hover {
+  filter: drop-shadow(0 0 20px #ff4444);
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #fff, #ff4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  margin-top: 10px;
+}
+
+/* Slogan */
+.slogan {
+  font-size: 1.2rem;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+/* Menü */
+nav ul.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+nav ul.menu li a {
+  padding: 10px 20px;
+  text-decoration: none;
+  background: rgba(178, 34, 34, 0.7);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+nav ul.menu li a:hover,
+nav ul.menu li a.active {
+  background: rgba(178, 34, 34, 0.95);
+  transform: translateY(-3px);
+}
+
+/* İçerik */
+.content {
+  padding: 20px 15px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.content h2 {
+  font-family: var(--font-heading);
+  color: var(--secondary);
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.content ul {
+  padding-left: 25px;
+  margin-top: 15px;
+}
+
+.content li {
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.content li::before {
+  content: '★';
+  color: var(--secondary);
+  position: absolute;
+  left: -20px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 25px 0;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .site-title {
+    font-size: 1.8rem;
+  }
+
+  nav ul.menu {
+    gap: 10px;
+  }
+
+  nav ul.menu li a {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+}

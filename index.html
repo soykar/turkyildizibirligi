@@ -2,10 +2,12 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TÜRK YILDIZI BİRLİĞİ</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Türk Yıldızı Birliği</title>
+  <meta name="description" content="Türk Yıldızı Birliği, Türk kimliğini bilim, kültür ve teknolojiyle geleceğe taşıyan gençlik hareketidir." />
+  <meta name="keywords" content="Türk Yıldızı Birliği, Türk gençliği, teknoloji, kültür, bilim, milli birlik" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 </head>
 <body>
@@ -15,28 +17,42 @@
 
   <div class="container">
     <header>
-      <img src="static/logo.png" alt="Logo" class="site-logo" />
+      <img src="static/logo.png" alt="Türk Yıldızı Birliği Logosu" class="site-logo" />
       <h1 class="site-title">TÜRK YILDIZI BİRLİĞİ</h1>
       <p class="slogan">Dijital çağın rotasını biz çiziyoruz!</p>
     </header>
 
     <nav>
       <ul class="menu">
-        <li><a href="index.html">Ana Sayfa</a></li>
-        <li><a href="hakkimizda.html">Hakkımızda</a></li>
-        <li><a href="projeler.html">Projeler</a></li>
-        <li><a href="iletisim.html">İletişim</a></li>
+        <li><a href="#anasayfa" class="active">Ana Sayfa</a></li>
+        <li><a href="#hakkimizda">Hakkımızda</a></li>
+        <li><a href="#projeler">Projeler</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
       </ul>
     </nav>
 
-    <section class="content">
+    <section id="anasayfa" class="content">
       <h2>Hoş Geldiniz!</h2>
-      <p>Bu site, Türk milletinin geçmişinden aldığı ilhamla geleceğe yön veren birliğimizin dijital yuvasıdır.</p>
+      <p>Türk Yıldızı Birliği, Türk milletinin geçmişinden aldığı ilhamla geleceğe yön veren gençlik hareketidir.</p>
+    </section>
+
+    <section id="hakkimizda" class="content">
+      <h2>Hakkımızda</h2>
+      <p>Türk Yıldızı Birliği, Türk tarihini, dilini ve kültürünü teknolojiyle buluşturan gençlik hareketidir. Milli bilinç, bilim, kültür ve geleceği birleştiriyoruz.</p>
+    </section>
+
+    <section id="projeler" class="content">
+      <h2>Projeler</h2>
       <ul>
-        <li>Amaç: Türk tarihini, dilini ve kültürünü teknoloji ve bilimle harmanlayarak milli bilinci güçlendirmek.</li>
-        <li>Vizyon: Geleceğin Türkiye'sinde, gençlerin liderliğinde teknolojik ve kültürel öncü bir birlik olmak.</li>
-        <li>Hedefler: Türk gençliğini teknolojik ve kültürel alanda donanımlı bireyler olarak yetiştirmek.</li>
+        <li>Bozkurt'un Çağrısı - Türk Mitolojisi Tabanlı Oyun</li>
+        <li>ULUĞ BEY ZİCİ Gök Bilim Akademisi</li>
+        <li>Erzurumlu Kara Fatma Metaverse Projesi</li>
       </ul>
+    </section>
+
+    <section id="iletisim" class="content">
+      <h2>İletişim</h2>
+      <p>📧 turkyildizibirligi@gmail.com<br />📍 Erzurum, Türkiye</p>
     </section>
 
     <footer>
@@ -45,20 +61,23 @@
   </div>
 
   <script>
+    // Matrix efekti
     const canvas = document.getElementById('matrix-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
     const chars = "01★TÜRK+-*/=YILDIZI";
     const fontSize = 16;
     const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
 
     function drawMatrix() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillStyle = "rgba(139,0,0,0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#FF0000";
+      ctx.fillStyle = "rgba(255,0,0,0.6)";
       ctx.font = fontSize + "px monospace";
+
       for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
@@ -67,24 +86,40 @@
       }
     }
 
-    tsParticles.load("tsparticles", {
-      particles: {
-        number: { value: 30 },
-        shape: {
-          type: "image",
-          image: { src: "static/benim_logo.svg", width: 100, height: 100 }
-        },
-        size: { value: 25 },
-        opacity: { value: 0.8 },
-        move: { enable: true, speed: 2, outModes: "bounce" },
-        links: { enable: true, distance: 150, color: "#ff0000", opacity: 0.5, width: 1 }
-      }
-    });
-
     setInterval(drawMatrix, 45);
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+    });
+
+    // tsParticles konfigürasyonu
+    tsParticles.load("tsparticles", {
+      fpsLimit: 60,
+      particles: {
+        number: { value: 40 },
+        shape: {
+          type: "image",
+          image: {
+            src: "static/benim_logo.svg",
+            width: 100,
+            height: 100,
+          },
+        },
+        size: { value: 20 },
+        opacity: { value: 0.8 },
+        move: {
+          enable: true,
+          speed: 2,
+          outModes: "bounce",
+        },
+        links: {
+          enable: true,
+          distance: 150,
+          color: "#ff0000",
+          opacity: 0.4,
+          width: 1,
+        },
+      },
     });
   </script>
 </body>
